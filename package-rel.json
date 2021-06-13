@@ -1,0 +1,26 @@
+{
+  "name": "react-chat-window-pro",
+  "description": "A chatbot window for React lets you connect with a chatbot and customise the appearance of the chat",
+  "author": "deep1224",
+  "keywords": [
+    "react",
+    "chat",
+    "chatbot",
+    "chatwindow",
+    "react-chat-window",
+    "react-chat-window-pro",
+    "messenger"
+  ],
+  "version": "1.0.2",
+  "private": false,
+  "main": "dist/index.ijs",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deep1224/react-chat-window"
+  }
+}
