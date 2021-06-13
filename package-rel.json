@@ -11,7 +11,7 @@
     "react-chat-window-pro",
     "messenger"
   ],
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "main": "dist/index.ijs",
   "module": "dist/index.js",
