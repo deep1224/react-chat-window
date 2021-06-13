@@ -31,6 +31,16 @@ import { ChatWindow } from 'react-chat-window-pro'
 
 Chat window support mutiple type of responses and themes 
 
+Add Chat window component:
+
+```javascript
+<ChatWindow 
+   theme="brown" 
+   title="Chat help" 
+   messages={messageData} 
+   handleResponse={handleUserMessage} />
+```
+
 ## Available Themes
 
 * blue
@@ -212,3 +222,6 @@ Show carousel of cards so use can choose from mutiple options
 
 React chat window pro have mutiple feature to interact with user efficiently
 
+![Simple Text with blue theme](https://github.com/deep1224/react-chat-window/blob/main/Samples/SimpleText.png?raw=true)
+![Card carosel with buttons, text and image in green theme](https://github.com/deep1224/react-chat-window/blob/main/Samples/CardButtonsCarosel.png?raw=true)
+![Quick replies with brown theme](https://github.com/deep1224/react-chat-window/blob/main/Samples/QuickReply.png?raw=true)
