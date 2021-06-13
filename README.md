@@ -222,6 +222,11 @@ Show carousel of cards so use can choose from mutiple options
 
 React chat window pro have mutiple feature to interact with user efficiently
 
-![Simple Text with blue theme](https://github.com/deep1224/react-chat-window/blob/main/Samples/SimpleText.png?raw=true)
-![Card carosel with buttons, text and image in green theme](https://github.com/deep1224/react-chat-window/blob/main/Samples/CardButtonsCarosel.png?raw=true)
-![Quick replies with brown theme](https://github.com/deep1224/react-chat-window/blob/main/Samples/QuickReply.png?raw=true)
+* Simple Text with blue theme
+![Simple Text](https://github.com/deep1224/react-chat-window/blob/main/Samples/SimpleText.png?raw=true)
+
+* Card carosel with buttons, text and image in green theme
+![Card carosel](https://github.com/deep1224/react-chat-window/blob/main/Samples/CardButtonsCarosel.png?raw=true)
+
+* Quick replies with brown theme
+![Quick replies](https://github.com/deep1224/react-chat-window/blob/main/Samples/QuickReply.png?raw=true)
