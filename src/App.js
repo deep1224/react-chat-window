@@ -43,7 +43,11 @@ function App() {
 
   return (
     <>
-      <ChatWindow theme="brown" title="Chat help" messages={messageData} handleResponse={handleUserMessage} />
+      <ChatWindow 
+        theme="brown" 
+         title="Chat help" 
+         messages={messageData} 
+         handleResponse={handleUserMessage} />
       <p>
         Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
         Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
