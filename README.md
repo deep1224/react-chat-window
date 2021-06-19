@@ -4,10 +4,12 @@ A chatbot window for React Js lets you connect with a chatbot and customise the 
 
 ## Table of Contents:
 * [Getting Started](#Getting-Started)
+* [What's New](#What's-New)
 * [Get Chat Window](#Get-Chat-window)
 * [Sample](#Sample)
+* [Upcoming](#Upcoming)
 
-## Getting Started
+# Getting Started
 
 ## How To Install
 
@@ -24,8 +26,15 @@ In a TypeScript file:
 
 ```javascript
 // import chat window package 
-import { ChatWindow } from 'react-chat-window-pro'
+import ChatWindow from 'react-chat-window-pro'
 ```
+
+# What's New
+
+* Read Receipt
+* Stacked Quick Reply
+* Chat Window Sizing (small, medium, large)
+* IsConnected Loader
 
 # Get Chat Window
 
@@ -34,11 +43,14 @@ Chat window support mutiple type of responses and themes
 Add Chat window component:
 
 ```javascript
-<ChatWindow 
-   theme="brown" 
-   title="Chat help" 
-   messages={messageData} 
-   handleResponse={handleUserMessage} />
+<ChatWindow
+        theme="blue"
+        title="Chat help"
+        messages={messageData}
+        isConnected={isConnected}
+        handleUserResponse={handleUserMessage}
+        handleClose={handleChatClose}
+        windowSize={"large"} />
 ```
 
 ## Available Themes
@@ -113,6 +125,35 @@ Quick replies list with message to perform quick messaging with user
 }
 ```
 
+### Stacked Quick Replies
+
+```javascript
+{
+	sender: "Bot", //Sender Name
+  	timestamp: "12:00", //Message Time stamp
+  	type: "card", //Type of Message
+  	isMe: false,  
+  	isClicked: false,
+	data: {
+		title: "I am Stacked Quick Reply", //This message show in bold
+		subititle: "I am Subtitle", //This message shows in normal
+		//List of buttons with link
+		buttons: [
+			{
+				action: "quickreply",
+				title: "Buy",
+				response: "Buy"
+			},
+			{
+				action: "quickreply",
+				title: "Add to Cart",
+				response: "Add to cart"
+			}
+		]
+	}
+}
+```
+
 ### Message with buttons
 
 Message with buttons will redirect user to given url
@@ -124,25 +165,25 @@ Message with buttons will redirect user to given url
   	type: "card", //Type of Message
   	isMe: false,  
   	isClicked: false,
-	data: {
+	data: [{
 		title: "I am title", //This message show in bold
 		subititle: "I am Subtitle", //This message shows in normal
 		//List of buttons with link
 		buttons: [
-		{
-			action: "link",
-			title: "Buy",
-			tooltip: "Buy this product with 20% discount",
-			url: "http://myurl"
-		},
-		{
-			action: "link",
-			title: "Add to Cart",
-			tooltip: "Add this product to cart",
-			url: "http://myurl"
-		}
+			{
+				action: "link",
+				title: "Buy",
+				tooltip: "Buy this product with 20% discount",
+				url: "http://myurl"
+			},
+			{
+				action: "link",
+				title: "Add to Cart",
+				tooltip: "Add this product to cart",
+				url: "http://myurl"
+			}
 		]
-	}
+	}]
 }
 ```
 
@@ -157,7 +198,7 @@ Show message and image in chat window
   	type: "card", //Type of Message
   	isMe: false,  
   	isClicked: false,
-	data: 
+	data:[ 
 	{
 		title: "I am title", //This message show in bold
 		subititle: "I am Subtitle", //This message shows in normal
@@ -166,7 +207,7 @@ Show message and image in chat window
 			type: "image",
 			url: "https://image.flaticon.com/icons/svg/145/145867.svg",
 		},		
-  }
+  }]
 },
 ```
 
@@ -175,14 +216,15 @@ Show message and image in chat window
 Show carousel of cards so use can choose from mutiple options
 
 ```javascript
+{
 	sender: "Bot", //Sender Name
   	timestamp: "12:00", //Message Time stamp
   	type: "card", //Type of Message
   	isMe: false,  
   	isClicked: false,
-	data:
+	data:[
 	{
-		title: "I am title",
+		title: "I am Card 1",
 		subititle: "I am Subtitle",
 		media: {
 			type: "image",
@@ -194,27 +236,25 @@ Show carousel of cards so use can choose from mutiple options
 				title: "Buy",
 				tooltip: "Buy this product with 20% discount",
 				url: "http://myurl"
-			},
+			}
+		]
+	},
+	{
+		title: "I am Card 2",
+		subititle: "I am Subtitle",
+		media: {
+			type: "image",
+			url: "https://image.flaticon.com/icons/svg/145/145867.svg",
+		},
+		buttons: [
 			{
 				action: "link",
-				title: "Add to Cart",
+				title: "Buy",
 				tooltip: "Buy this product with 20% discount",
 				url: "http://myurl"
-			},
-			{
-				action: "link",
-				title: "Wishlist",
-				tooltip: "Add this product to wishlist",
-				url: "http://myurl"
-			},
-			{
-				action: "link",
-				title: "Go to Cart",
-				tooltip: "Go to cart and check out",
-				url: "http://myurl"
-			},
+			}			
 		]
-	}
+	}]
 }
 ```
 
@@ -222,11 +262,39 @@ Show carousel of cards so use can choose from mutiple options
 
 React chat window pro have mutiple feature to interact with user efficiently
 
-* Simple Text with blue theme
+* Simple Text with brown theme
+
 ![Simple Text](https://github.com/deep1224/react-chat-window/blob/main/Samples/SimpleText.png?raw=true)
 
 * Card carosel with buttons, text and image in green theme
+
 ![Card carosel](https://github.com/deep1224/react-chat-window/blob/main/Samples/CardButtonsCarosel.png?raw=true)
 
-* Quick replies with brown theme
+* Image Card carosel
+
+![Card carosel](https://github.com/deep1224/react-chat-window/blob/main/Samples/imageCardCarousel.png?raw=true)
+
+* Quick replies with blue theme
+
 ![Quick replies](https://github.com/deep1224/react-chat-window/blob/main/Samples/QuickReply.png?raw=true)
+
+* Chat connection loader
+
+![Quick replies](https://github.com/deep1224/react-chat-window/blob/main/Samples/ConnectionLoader.GIF?raw=true)
+
+# Upcoming
+
+Adding new features to chat window
+
+* Typing Indicator
+* Delays in messages
+* Mutiple Chat bubble
+* Print Chat
+* High Important
+* Chat bubble positions
+* More Theme options
+* Emojis
+* Video card with inline video player
+* Map Cards
+* Graph Cards
+* Attachement options

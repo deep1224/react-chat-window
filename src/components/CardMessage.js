@@ -8,11 +8,11 @@ function CardMessage(params, handleButtonClick, msgIndex) {
 						<div key={`cardItem${new Date().getTime()}${index}`} className="scrollcardItem">
 							
 							<div key={`card${new Date().getTime()}`} className="card">
-								<p key={`cardTitle${new Date().getTime()}`} className="cardTitle">{_item.title}</p>
-								<p key={`cardSubTitle${new Date().getTime()}`} className="cardSubtitle">{_item.subititle}</p>
-								<img key={`cardImage${new Date().getTime()}`} src={_item.media.url} alt="Paris" className="cardImage" />
+							{_item.title && <p key={`cardTitle${new Date().getTime()}`} className="cardTitle">{_item.title}</p>}
+							{_item.subtitle && <p key={`cardSubTitle${new Date().getTime()}`} className="cardSubtitle">{_item.subtitle}</p>}
+							{_item.media && <img key={`cardImage${new Date().getTime()}`} src={_item.media.url} alt="Paris" className="cardImage" />}
 								<br />
-								{_item.buttons.map((_btn, index) => {
+								{_item.buttons && _item.buttons.map((_btn, index) => {
 									return <div><button key={`cbtn${new Date().getTime()}${index}`}
 										className="cardlinkButton"
 										onClick={(event) => {

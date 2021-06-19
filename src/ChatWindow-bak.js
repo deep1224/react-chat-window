@@ -143,9 +143,15 @@ function ChatWindow({ title, theme, messages, handleUserResponse, isConnected, h
 								<span className="messengerMinimize" onClick={handleMinizeClick}>
 									<i className="fas fa-window-minimize"></i>
 								</span>
-								<span className="dropbtn" onClick={handleCloseClick}>
-									<i className="fas fa-times"></i>
-								</span>								
+								<span>
+									<div className="dropdown">
+										<button onClick={handleMenuClick} className="dropbtn"><i className="fas fa-cog"></i></button>
+										{loadMenu && <div id="myDropdown" className="dropdown-content">
+											<button onClick={printOrder}>Print transcript</button>
+											<button onClick={handleCloseClick}>Close</button>
+										</div>}
+									</div>
+								</span>
 							</div>
 						</header>
 

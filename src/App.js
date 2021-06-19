@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-// import ChatWindow from './components/ChatWindow'
-import { ChatWindow } from 'react-chat-window-pro'
+import ChatWindow from './components/ChatWindow'
+// import { ChatWindow } from 'react-chat-window-pro'
 
 function App() {
-
+  const [isConnected, setIsConnected] = useState(false);
+  useEffect(() => {
+    setTimeout(function () { setIsConnected(true); }, 5000);
+  }, [])
   const [messageData, setMessageData] = useState(sampleData);
   function handleUserMessage(userResponse) {
     // event.preventDefault();
@@ -17,10 +20,15 @@ function App() {
     botResponse();
   }
 
+  function handleChatClose() {
+    setIsConnected(false);
+  }
+
   function appendMessage(message) {
-    console.log("Message data before", messageData)
-    setMessageData(oldData => [...oldData, message]);
-    console.log("MessageData After", messageData)
+    // console.log("Message data before", messageData)
+    // setMessageData(oldData => [...oldData, message]);
+    // console.log("MessageData After", messageData)
+    setMessageData(oldData => [...oldData.map((_item) => { return _item.sender !== "Bot" ? { ..._item, ...{ isRead: true } } : _item }), message]);
   }
 
   function botResponse() {
@@ -43,49 +51,27 @@ function App() {
 
   return (
     <>
-      <ChatWindow 
-        theme="brown" 
-         title="Chat help" 
-         messages={messageData} 
-         handleResponse={handleUserMessage} />
-      <p>
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!<br />
-        Materialize is a modern responsive CSS framework based on Material Design by Google. ... If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in ... Creating a horizontal FAB is easy!
-
-      </p>
+      <ChatWindow
+        theme="blue"
+        title="Chat help"
+        messages={messageData}
+        isConnected={isConnected}
+        handleUserResponse={handleUserMessage}
+        handleClose={handleChatClose}
+        windowSize={"large"} />
+      <div style={{marginLeft: "auto", marginRight: "auto"}}>
+      <h1 >React Chat Window Pro Demo</h1>
+      <h4>
+        New Features
+        <ul>
+          <li>Read Receipt</li>
+          <li>Stacked Quick Reply</li>
+          <li>Chat Window Sizing (small, medium, large)</li>
+          <li>IsConnected Loader</li>
+        </ul>
+      </h4>
+      </div>
+      
     </>
   );
 }
@@ -274,7 +260,7 @@ function random(min, max) {
 // }
 
 // // export default ChatWindow
-const sampleData= [{
+const sampleData = [{
   sender: "Bot",
   timestamp: formatDate(new Date()),
   type: "text",
@@ -288,6 +274,7 @@ const sampleData= [{
   timestamp: formatDate(new Date()),
   type: "text",
   isMe: true,
+  isRead: true,
   data: {
     text: "I need help"
   },
@@ -299,7 +286,74 @@ const sampleData= [{
 //   isMe: false,
 //   data: [{
 //     title: "Smart TVs",
-//     subititle: "Best selling smart TVs",
+//     subtitle: "Best selling smart TVs",
+//     media: {
+//       type: "image",
+//       url: "https://cdn.iconscout.com/icon/free/png-256/tv-television-remote-hotel-restaurant-room-entertainment-6-22850.png",
+//     },
+//   },{
+//     title: "Smart TVs",
+//     subtitle: "Best selling smart TVs",
+//     media: {
+//       type: "image",
+//       url: "https://cdn.iconscout.com/icon/free/png-256/tv-television-remote-hotel-restaurant-room-entertainment-6-22850.png",
+//     },
+//   },]
+// },
+// {
+//   sender: "Bot",
+//   timestamp: formatDate(new Date()),
+//   type: "card",
+//   isMe: false,
+//   data: [{
+//     // title: "Smart TVs",
+//     subtitle: "Best selling smart TVs Best selling smart TVs",
+//     buttons: [
+//       {
+//         action: "link",
+//         title: "Buy",
+//         url: "https://www.google.com/",
+//         tooltip: "Buy this product with 20% discount"
+//       },
+//       {
+//         action: "link",
+//         title: "Add to Cart",
+//         url: "https://www.google.com/",
+//         tooltip: "Buy this product with 20% discount"
+//       }
+//     ]
+//   },]
+// },
+// {
+//   sender: "Bot",
+//   timestamp: formatDate(new Date()),
+//   type: "card",
+//   isMe: false,
+//   data: [{
+//     // title: "Smart TVs",
+//     subtitle: "Best selling smart TVs Best selling smart TVs",
+//     buttons: [
+//       {
+//         action: "quickreply",
+//         title: "Buy",
+//         response: "Buy"
+//       },
+//       {
+//         action: "quickreply",
+//         title: "Add to Cart",
+//         response: "Add to cart"
+//       }
+//     ]
+//   },]
+// },
+// {
+//   sender: "Bot",
+//   timestamp: formatDate(new Date()),
+//   type: "card",
+//   isMe: false,
+//   data: [{
+//     title: "Smart TVs",
+//     subtitle: "Best selling smart TVs",
 //     media: {
 //       type: "image",
 //       url: "https://cdn.iconscout.com/icon/free/png-256/tv-television-remote-hotel-restaurant-room-entertainment-6-22850.png",
@@ -332,7 +386,7 @@ const sampleData= [{
 //     ]
 //   }, {
 //     title: "I am title",
-//     subititle: "I am Subtitle",
+//     subtitle: "I am Subtitle",
 //     media: {
 //       type: "image",
 //       url: "https://cdn.iconscout.com/icon/free/png-256/tv-television-remote-hotel-restaurant-room-entertainment-6-22850.png",
@@ -361,7 +415,7 @@ const sampleData= [{
 //     ]
 //   }, {
 //     title: "I am title",
-//     subititle: "I am Subtitle",
+//     subtitle: "I am Subtitle",
 //     media: {
 //       type: "image",
 //       url: "https://image.flaticon.com/icons/svg/145/145867.svg",
